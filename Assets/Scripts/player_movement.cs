@@ -10,7 +10,7 @@ public class player_movement : MonoBehaviour
     void Start()
     {
         pos = new Vector3(0, 0, 0);
-        speed = 5f;
+        speed = 2f;
     }
 
     // Update is called once per frame
