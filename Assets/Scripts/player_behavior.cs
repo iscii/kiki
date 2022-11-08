@@ -6,13 +6,12 @@ public class player_behavior : MonoBehaviour
 {
     private Vector3 pos;
     [SerializeField]    //shows var (speed) in inspector so we can modify it but keeps it private
-    private float speed;
+    private float speed = 2f;
     private GameObject waste;
     // Start is called before the first frame update
     void Start()
     {
         pos = new Vector3(0, 0, 0);
-        speed = 2f;
         waste = GameObject.Find("main_camera").GetComponent<game_controller>().waste;   //reference waste object from game_controller script (there'll only be one bc it's under the camera)
     }
 
