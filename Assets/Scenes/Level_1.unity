@@ -430,6 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06daaf83d30d8dc48ac885f50383253b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  free_move_border: {x: 2.5, y: 1}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class camera_behavior : MonoBehaviour
     private GameObject map;   //pfc stands for proof of concept. don't ask me why it seemed appropriate
     private GameObject player;
     [SerializeField]
-    private Vector2 free_move_border = new Vector2(2.5f, 1f);    //x, y offsets relative to position
+    private Vector2 free_move_border = new Vector2(4f, 2f);    //x, y offsets relative to position
     private Vector2 map_border;
     
     // Start is called before the first frame update
@@ -25,22 +25,21 @@ public class camera_behavior : MonoBehaviour
     {
         Vector3 pos = transform.position;
         Vector3 player_pos = player.transform.position;
-        Vector2 cam_bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0)); //gets x and y bounds of cam (relative to position)   
+        Vector2 cam_bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0)); //gets right and top bounds of cam (relative to position)   
+        float diff_x = cam_bounds.x - pos.x;     //diff b/t right bound and pos
+        float diff_y = cam_bounds.y - pos.y;     //diff b/t top bound and pos
         
-        //!ISUE: if player position is greater (or less than neg of) than border offset AND we aren't at map edges, move the difference (b/t player pos and border)
-        //pos.x - cam_bounds.x. same for y. but they aren't working fsr so we'll have to find a better way.
-        //this works but is buggy af rn
-        Debug.Log("cam x pos: " + pos.x + " cam x bound: " + cam_bounds.x + " total: " + (pos.x-cam_bounds.x));
-        if((pos.x + cam_bounds.x) < (map.transform.position.x + map_border.x) && player_pos.x > (pos.x + free_move_border.x)){  //to the right of free border
+        Debug.Log("cam bound: " + cam_bounds.x + " map x bound: " + map_border.x + " total: " + (map.transform.position.x - map_border.x));
+        if(cam_bounds.x < (map.transform.position.x + map_border.x) && player_pos.x > (pos.x + free_move_border.x)){  //to the right of free border
             pos.x += Mathf.Abs(player_pos.x - (pos.x + free_move_border.x));
         }
-        if((pos.x + cam_bounds.x) > (map.transform.position.x - map_border.x) && player_pos.x < (pos.x - free_move_border.x)){  //to the left of free border
+        if((cam_bounds.x - 2*diff_x) > (map.transform.position.x - map_border.x) && player_pos.x < (pos.x - free_move_border.x)){  //to the left of free border
             pos.x -= Mathf.Abs(player_pos.x - (pos.x - free_move_border.x));
         }
-        if((pos.y + cam_bounds.y) < (map.transform.position.y + map_border.y) && player_pos.y > (pos.y + free_move_border.y)){  //to the top of free border
+        if(cam_bounds.y < (map.transform.position.y + map_border.y) && player_pos.y > (pos.y + free_move_border.y)){  //to the top of free border
             pos.y += Mathf.Abs(player_pos.y - (pos.y + free_move_border.y));
         }
-        if((pos.y + cam_bounds.y) > (map.transform.position.y - map_border.y) && player_pos.y < (pos.y - free_move_border.y)){  //to the bottom of free border
+        if((cam_bounds.y - 2*diff_y) > (map.transform.position.y - map_border.y) && player_pos.y < (pos.y - free_move_border.y)){  //to the bottom of free border
             pos.y -= Mathf.Abs(player_pos.y - (pos.y - free_move_border.y));
         }
         transform.position = pos;
