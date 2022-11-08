@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8492747204365145225}
   - component: {fileID: -4773776670075573839}
   m_Layer: 0
-  m_Name: Waste
+  m_Name: waste
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
