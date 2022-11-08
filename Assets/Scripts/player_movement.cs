@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class player_movement : MonoBehaviour
 {
-    public Vector3 pos;
+    private Vector3 pos;
     public float speed;
-    public GameObject obj;
     // Start is called before the first frame update
     void Start()
     {
-        pos = new Vector3(0, 0, 0);
+        pos = new Vector3(0, 10, 0);
         speed = 2f;
-        Instantiate(obj, new Vector3(0, 10, 0), Quaternion.identity); 
     }
 
     // Update is called once per frame
