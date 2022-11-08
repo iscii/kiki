@@ -13,7 +13,7 @@ public class player_behavior : MonoBehaviour
     {
         pos = new Vector3(0, 0, 0);
         speed = 2f;
-        waste = GameObject.Find("Main Camera").GetComponent<game_controller>().waste;   //reference waste object from game_controller script (there'll only be one bc it's under the camera)
+        waste = GameObject.Find("main_camera").GetComponent<game_controller>().waste;   //reference waste object from game_controller script (there'll only be one bc it's under the camera)
     }
 
     // Update is called once per frame
