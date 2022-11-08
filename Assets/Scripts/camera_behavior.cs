@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class camera_behavior : MonoBehaviour
 {
-    private GameObject map;   //pfc stands for proof of concept. don't ask me why it seemed appropriate
+    private GameObject map;
     private GameObject player;
+    private GameObject game;
+    private Vector2 map_border;
     [SerializeField]
     private Vector2 free_move_border = new Vector2(4f, 2f);    //x, y offsets relative to position
-    private Vector2 map_border;
+
     
     // Start is called before the first frame update
     void Start()
     {    
+        game = GameObject.Find("game");
+        map_border = game.GetComponent<game_controller>().map_border;
         map = GameObject.Find("pfc_map");
         player = GameObject.Find("player");
-
-        map_border = map.transform.localScale / 2;  //gets x and y of map scale /2 and puts it into vector2 map_border as offsets
     }
 
     // Update is called once per frame
