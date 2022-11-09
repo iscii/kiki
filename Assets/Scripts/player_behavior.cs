@@ -42,15 +42,15 @@ public class player_behavior : MonoBehaviour
         if(Input.GetKey("d")){  
             pos.x += update_constant;
         }
-        // if (Input.GetMouseButtonDown(0)){
-        //     RaycastHit raycastHit;
-        //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //     if (Physics.Raycast(ray, out raycastHit)){
-        //         if (raycastHit.transform == waste){
-        //             Destroy(waste);
-        //         }
-        //     }
-        // }
+        if (Input.GetMouseButtonDown(0)){
+            RaycastHit raycastHit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out raycastHit)){
+                if (raycastHit.transform == waste){
+                    Destroy(waste);
+                }
+            }
+        }
 
         rot = Quaternion.Euler(0, 0, Mathf.Atan2(gc.mouse_world_pos.y-pos.y, gc.mouse_world_pos.x-pos.x)*Mathf.Rad2Deg-90);
 
@@ -61,7 +61,7 @@ public class player_behavior : MonoBehaviour
         transform.position = pos;
         transform.rotation = rot;
     }
-    void OnMouseDown() {
-        Destroy(waste);
-    }
+    // void OnMouseDown() {
+    //     Destroy(waste);
+    // }
 }
