@@ -62,3 +62,6 @@ crashlytics-build.properties
 /UserSettings/*
 
 .vscode/
+
+# Linux msbuild pointer (https://www.reddit.com/r/archlinux/comments/ihydj9/unity3d_and_vscode_working_on_arch_linux/)
+Directory.build.props
