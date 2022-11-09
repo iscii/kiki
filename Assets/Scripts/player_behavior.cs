@@ -11,19 +11,21 @@ public class player_behavior : MonoBehaviour
     private float object_width;
     private float object_height;
     [SerializeField]    //shows var (speed) in inspector so we can modify it but keeps it private
-    private float speed = 2f;
+    private float speed;
     private GameObject waste;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //references
         gc = GameObject.Find("game").GetComponent<game_controller>();
+        waste = gc.waste;   //reference waste object from game_controller script (there'll only be one bc it's under the camera)
         hitbox = gameObject.GetComponent<BoxCollider2D>();
-        
-        pos = new Vector3(0, 0, 0);
         object_width = hitbox.size.x;
         object_height = hitbox.size.y;
-        waste = gc.waste;   //reference waste object from game_controller script (there'll only be one bc it's under the camera)
+
+        //gameObject variables
+        speed = 6f;
+        pos = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
