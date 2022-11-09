@@ -17,6 +17,7 @@ public class player_behavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         pos = new Vector3(0, 0, 0);
         game = GameObject.Find("game");
         gc = game.GetComponent<game_controller>();
