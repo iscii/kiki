@@ -6,7 +6,6 @@ public class player_behavior : MonoBehaviour
 {
     [SerializeField] private Vector3 pos;
     private Quaternion rot;     // player rotation
-    private GameObject game;
     private game_controller gc;    // to access game_controller values
     private BoxCollider2D hitbox;     // player hitbox
     private float object_width;
@@ -18,13 +17,13 @@ public class player_behavior : MonoBehaviour
     void Start()
     {
         
-        pos = new Vector3(0, 0, 0);
-        game = GameObject.Find("game");
-        gc = game.GetComponent<game_controller>();
+        gc = GameObject.Find("game").GetComponent<game_controller>();
         hitbox = gameObject.GetComponent<BoxCollider2D>();
+        
+        pos = new Vector3(0, 0, 0);
         object_width = hitbox.size.x;
         object_height = hitbox.size.y;
-        waste = GameObject.Find("main_camera").GetComponent<game_controller>().waste;   //reference waste object from game_controller script (there'll only be one bc it's under the camera)
+        waste = gc.waste;   //reference waste object from game_controller script (there'll only be one bc it's under the camera)
     }
 
     // Update is called once per frame
