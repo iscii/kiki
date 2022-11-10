@@ -55,7 +55,4 @@ public class player_behavior : MonoBehaviour
         transform.position = pos;
         transform.rotation = rot;
     }
-    // void OnMouseDown() {
-    //     Destroy(waste);
-    // }
 }
