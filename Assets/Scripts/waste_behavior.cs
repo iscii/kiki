@@ -9,6 +9,7 @@ public class waste_behavior : MonoBehaviour
     void Start()
     {
         gc = GameObject.Find("game").GetComponent<game_controller>();
+        
     }
 
     // Update is called once per frame
@@ -17,7 +18,6 @@ public class waste_behavior : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             Destroy(gameObject);
         }
-        
     }
     
     private void OnMouseEnter() {

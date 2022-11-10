@@ -16,7 +16,7 @@ public class game_controller : MonoBehaviour
     private GameObject map;
 
     //variable spawnrate
-    
+
     // Start is called before the first frame update
     void Start()
     {        
