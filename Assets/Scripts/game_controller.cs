@@ -22,6 +22,14 @@ public class game_controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {        
+        // path = Application.dataPath + "/ScoreRecords.json";
+        // jsonString = File.ReadAllText (path); 
+        // ListaRecords listaRecords = JsonUtility.FromJson<ListaRecords> (jsonString);
+        // print(listaRecords);
+        // foreach(Record record in listaRecords){
+        //     Debug.Log ("nombre: " + record.name + "score: " + record.score);
+        // }
+        
         //instead of doing this, use a sprite.
         Cursor.SetCursor(cursor_pointer, new Vector2(cursor_pointer.width/2, cursor_pointer.height/10), CursorMode.Auto);
 

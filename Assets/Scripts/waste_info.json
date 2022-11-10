@@ -1,1 +1,41 @@
-    
+{
+    "small":{
+        "PDP": {
+            "description": ""
+        },
+        "Apple II": {
+            "description": ""
+        },
+        "Macintosh": {
+            "description": ""
+        },
+        "APF Imagination Machine": {
+            "description": ""
+        },
+        "Walkman": {
+            "description": ""
+        }
+    },
+    "medium":{
+        "IBM PC": {
+            "description": ""
+        },
+        "iPod Classic": {
+            "description": ""
+        },
+        "Atari 2600": {
+            "description": ""
+        }
+    },
+    "big":{
+        "HP-01": {
+            "description": ""
+        },
+        "Bakelite Phone": {
+            "description": ""
+        },
+        "Ericsson DBH 1001": {
+            "description": ""
+        }
+    }
+}

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class waste_behavior : MonoBehaviour
 {
+    //references
     private game_controller gc;
     private CircleCollider2D player_collider;
+    //gameObject variables
+    public string desc;
     private BoxCollider2D col;
     // Start is called before the first frame update
     void Start()
