@@ -20,7 +20,7 @@ public class camera_behavior : MonoBehaviour
         player = GameObject.Find("player");
 
         //gameObject variables
-        free_move_border = new Vector2(6f, 2.25f);
+        free_move_border = new Vector2(3f, 2f);
     }
 
     // Update is called once per frame
