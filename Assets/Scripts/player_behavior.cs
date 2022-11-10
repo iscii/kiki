@@ -28,7 +28,7 @@ public class player_behavior : MonoBehaviour
 
         //gameObject variables
         velocity = new Vector3(0, 0, 0);
-        max_speed = 6f;
+        max_speed = 3f;
         accel = 12f;
         pos = new Vector3(0, 0, 0);
     }
@@ -39,18 +39,34 @@ public class player_behavior : MonoBehaviour
 
         float update_constant = accel*Time.deltaTime;
         if (Input.GetKey("w") && velocity.y >= 0){
-            velocity.y += update_constant;
+            if (velocity.x == 0){
+                velocity.y += update_constant;
+            } else {
+                velocity.y = Mathf.Abs(velocity.x) + update_constant;
+            }
         } 
         else if (Input.GetKey("s") && velocity.y <= 0){
-            velocity.y -= update_constant;
+            if (velocity.x == 0){
+                velocity.y -= update_constant;
+            } else {
+                velocity.y = -1*(Mathf.Abs(velocity.x) + update_constant);
+            }
         } else {
             velocity.y = 0;
         }
         if (Input.GetKey("a") && velocity.x <= 0){
-            velocity.x -= update_constant;
+            if (velocity.y == 0){
+                velocity.x -= update_constant;
+            } else {
+                velocity.x = -1*Mathf.Abs(velocity.y);
+            }
         }
         else if(Input.GetKey("d")&& velocity.x >= 0){  
-            velocity.x += update_constant;
+            if (velocity.y == 0) {
+                velocity.x += update_constant;
+            } else {
+                velocity.x = Mathf.Abs(velocity.y);
+            }
         } else {
             velocity.x = 0;
         }
