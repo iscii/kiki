@@ -13,7 +13,9 @@ public class game_controller : MonoBehaviour
     public Vector3 mouse_world_pos;  // position of the mouse relative to world coordinates
     [HideInInspector]   //waste is public for other scripts to reference, but we don't need it to clutter the inspector. it'll be dynamically instantiated.
     public GameObject waste;    //waste object returned from instantiation. public so we can reference from player behavior
+    public ArrayList waste_arr;
     private GameObject map;
+
 
     //variable spawnrate
 
@@ -27,6 +29,7 @@ public class game_controller : MonoBehaviour
         map_border = map.transform.localScale / 2;  //gets x and y of map scale /2 and puts it into vector2 map_border as offsets
 
         waste = Instantiate<GameObject>(waste_prefab, new Vector3(0, 3.5f, 0), Quaternion.identity);
+        waste_arr.Add(waste);
     }
 
     // Update is called once per frame
