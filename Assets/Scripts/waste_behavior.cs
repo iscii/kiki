@@ -6,13 +6,13 @@ public class waste_behavior : MonoBehaviour
 {
     private game_controller gc;
     private CircleCollider2D player_collider;
-    private BoxCollider2D collider;
+    private BoxCollider2D col;
     // Start is called before the first frame update
     void Start()
     {
         gc = GameObject.Find("game").GetComponent<game_controller>();
         player_collider = GameObject.Find("player").GetComponent<CircleCollider2D>();
-        collider = gameObject.GetComponent<BoxCollider2D>();
+        col = gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class waste_behavior : MonoBehaviour
 
     private void OnMouseOver(){
         if (Input.GetMouseButtonDown(0)){
-            if (collider.bounds.Intersects(player_collider.bounds)){
+            if (col.bounds.Intersects(player_collider.bounds)){
                 Destroy(gameObject.GetComponent<Renderer>());
             }
             
