@@ -15,9 +15,6 @@ public class waste_behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)){
-            Destroy(gameObject);
-        }
     }
     
     private void OnMouseEnter() {
@@ -26,5 +23,11 @@ public class waste_behavior : MonoBehaviour
 
     private void OnMouseExit() {
         // Cursor.SetCursor(gc.cursorPointer, new Vector2(gc.cursorPointer.width/2, gc.cursorPointer.height/10), CursorMode.Auto);
+    }
+
+    private void OnMouseOver(){
+        if (Input.GetMouseButtonDown(0)){
+            Destroy(gameObject.GetComponent<Renderer>());
+        }
     }
 }

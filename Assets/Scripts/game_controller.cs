@@ -27,6 +27,8 @@ public class game_controller : MonoBehaviour
         map_border = map.transform.localScale / 2;  //gets x and y of map scale /2 and puts it into vector2 map_border as offsets
 
         waste = Instantiate<GameObject>(waste_prefab, new Vector3(0, 3.5f, 0), Quaternion.identity);
+        waste = Instantiate<GameObject>(waste_prefab, new Vector3(2, 3.5f, 0), Quaternion.identity);
+        waste = Instantiate<GameObject>(waste_prefab, new Vector3(7, 3.5f, 0), Quaternion.identity);
     }
 
     // Update is called once per frame
