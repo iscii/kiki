@@ -13,7 +13,7 @@ public class game_controller : MonoBehaviour
     public Vector3 mouse_world_pos;  // position of the mouse relative to world coordinates
     [HideInInspector]   //waste is public for other scripts to reference, but we don't need it to clutter the inspector. it'll be dynamically instantiated.
     public GameObject waste;    //waste object returned from instantiation. public so we can reference from player behavior
-    public ArrayList waste_arr;
+    public ArrayList waste_arr = new ArrayList();
     private GameObject map;
 
 
