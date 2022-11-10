@@ -36,7 +36,7 @@ public class waste_behavior : MonoBehaviour
             if (col.bounds.Intersects(player_collider.bounds)){
                 Destroy(gameObject.GetComponent<Renderer>());
             }
-            
+            //hi
         }
     }
 }
