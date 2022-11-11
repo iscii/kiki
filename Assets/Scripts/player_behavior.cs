@@ -74,7 +74,7 @@ public class player_behavior : MonoBehaviour
         velocity = Vector3.ClampMagnitude(velocity, max_speed);
 
         pos += velocity*Time.deltaTime;
-
+    
         rot = Quaternion.Euler(0, 0, Mathf.Atan2(gc.mouse_world_pos.y-pos.y, gc.mouse_world_pos.x-pos.x)*Mathf.Rad2Deg-90);
 
         // clamp the player's position so they can't leave the map
