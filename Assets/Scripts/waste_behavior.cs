@@ -10,6 +10,7 @@ public class waste_behavior : MonoBehaviour
     //gameObject variables
     public string desc;
     private BoxCollider2D col;
+    private bool in_range;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class waste_behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
     
     private void OnMouseEnter() {
@@ -33,10 +35,18 @@ public class waste_behavior : MonoBehaviour
 
     private void OnMouseOver(){
         if (Input.GetMouseButtonDown(0)){
-            if (col.bounds.Intersects(player_collider.bounds)){
+            if (in_range){
                 Destroy(gameObject.GetComponent<Renderer>());
+                Destroy(gameObject.GetComponent<BoxCollider2D>());
             }
-            //hi
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        in_range = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        in_range = false;
     }
 }
