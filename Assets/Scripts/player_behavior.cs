@@ -24,7 +24,7 @@ public class player_behavior : MonoBehaviour
         hitbox = gameObject.GetComponent<CapsuleCollider2D>();
         player_width = hitbox.size.x;
         player_height = hitbox.size.y;
-        interact_box = gameObject.GetComponent<CircleCollider2D>();     
+        interact_box = gameObject.GetComponent<CircleCollider2D>();
 
         //gameObject variables
         velocity = new Vector3(0, 0, 0);

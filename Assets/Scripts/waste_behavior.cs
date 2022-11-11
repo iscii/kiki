@@ -36,18 +36,18 @@ public class waste_behavior : MonoBehaviour
 
     private void OnMouseOver(){
         if (Input.GetMouseButtonDown(0)){
-            //FIXME: only works for the the bounds of the collider, not when inside collider.
-            //Fix -> use OnCollisionEnter to set a flag in_range to true. 
-                //then on mouse button down, if in_range, we can destroy.
-                //would also allow us to easily deal with highlighting waste in range of player
-            if (col.bounds.Intersects(player_collider.bounds)){
-                //remember to destroy waste colliders as well
+            if (in_range){
                 Destroy(gameObject.GetComponent<Renderer>());
+                Destroy(gameObject.GetComponent<BoxCollider2D>());
             }
-            
         }
     }
-    private void OnCollisionEnter(Collision other) {
-        
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        in_range = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        in_range = false;
     }
 }
