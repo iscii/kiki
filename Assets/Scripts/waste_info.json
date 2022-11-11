@@ -1,41 +1,63 @@
 {
-    "small":{
-        "PDP": {
-            "description": ""
+    "small":[
+        {
+            "name": "PDP", 
+            "description": "",
+            "size": 1
         },
-        "Apple II": {
-            "description": ""
+        {
+            "name": "Apple II",
+            "description": "",
+            "size": 1
         },
-        "Macintosh": {
-            "description": ""
+        {
+            "name": "Macintosh",
+            "description": "",
+            "size": 1
         },
-        "APF Imagination Machine": {
-            "description": ""
+        {
+            "name": "APF Imagination Machine",
+            "description": "",
+            "size": 1
         },
-        "Walkman": {
-            "description": ""
+        {
+            "name": "Walkman",
+            "description": "",
+            "size": 1
         }
-    },
-    "medium":{
-        "IBM PC": {
-            "description": ""
+    ],
+    "medium":[
+        {
+            "name": "IBM PC",
+            "description": "",
+            "size": 2
         },
-        "iPod Classic": {
-            "description": ""
+        {
+            "name": "iPod Classic",
+            "description": "",
+            "size": 2
         },
-        "Atari 2600": {
-            "description": ""
+        {
+            "name": "Atari 2600",
+            "description": "",
+            "size": 2
         }
-    },
-    "big":{
-        "HP-01": {
-            "description": ""
+    ],
+    "big":[
+        {
+            "name": "HP-01",
+            "description": "",
+            "size": 3
         },
-        "Bakelite Phone": {
-            "description": ""
+        {
+            "name": "Bakelite Phone",
+            "description": "",
+            "size": 3
         },
-        "Ericsson DBH 1001": {
-            "description": ""
+        {
+            "name": "Ericsson DBH 1001",
+            "description": "",
+            "size": 3
         }
-    }
+    ]
 }
