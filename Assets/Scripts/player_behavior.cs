@@ -11,7 +11,9 @@ public class player_behavior : MonoBehaviour
     private float player_width;
     private float player_height;
     private CircleCollider2D interact_box;      //interaction box
-    [SerializeField] private float speed;       //shows var (speed) in inspector so we can modify it but keeps it private
+    [SerializeField] private Vector3 velocity;       //shows var (speed) in inspector so we can modify it but keeps it private
+    private float max_speed;
+    private float accel;
     private GameObject waste;
     // Start is called before the first frame update
     void Start()
@@ -25,27 +27,54 @@ public class player_behavior : MonoBehaviour
         interact_box = gameObject.GetComponent<CircleCollider2D>();
 
         //gameObject variables
-        speed = 6f;
+        velocity = new Vector3(0, 0, 0);
+        max_speed = 3f;
+        accel = 12f;
         pos = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float update_constant = speed*Time.deltaTime;
-        if (Input.GetKey("w")){
-            pos.y += update_constant;
+
+        float update_constant = accel*Time.deltaTime;
+        if (Input.GetKey("w") && velocity.y >= 0){
+            if (velocity.x == 0){
+                velocity.y += update_constant;
+            } else {
+                velocity.y = Mathf.Abs(velocity.x) + update_constant;
+            }
         } 
-        if (Input.GetKey("s")){
-            pos.y -= update_constant;
-        } 
-        if (Input.GetKey("a")){
-            pos.x -= update_constant;
+        else if (Input.GetKey("s") && velocity.y <= 0){
+            if (velocity.x == 0){
+                velocity.y -= update_constant;
+            } else {
+                velocity.y = -1*(Mathf.Abs(velocity.x) + update_constant);
+            }
+        } else {
+            velocity.y = 0;
         }
-        if(Input.GetKey("d")){  
-            pos.x += update_constant;
+        if (Input.GetKey("a") && velocity.x <= 0){
+            if (velocity.y == 0){
+                velocity.x -= update_constant;
+            } else {
+                velocity.x = -1*Mathf.Abs(velocity.y);
+            }
+        }
+        else if(Input.GetKey("d")&& velocity.x >= 0){  
+            if (velocity.y == 0) {
+                velocity.x += update_constant;
+            } else {
+                velocity.x = Mathf.Abs(velocity.y);
+            }
+        } else {
+            velocity.x = 0;
         }
 
+        velocity = Vector3.ClampMagnitude(velocity, max_speed);
+
+        pos += velocity*Time.deltaTime;
+    
         rot = Quaternion.Euler(0, 0, Mathf.Atan2(gc.mouse_world_pos.y-pos.y, gc.mouse_world_pos.x-pos.x)*Mathf.Rad2Deg-90);
 
         // clamp the player's position so they can't leave the map

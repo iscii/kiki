@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0, z: 0}
-  speed: 5
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!70 &47432571
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -522,6 +522,7 @@ MonoBehaviour:
   map_border: {x: 0, y: 0}
   mouse_world_pos: {x: 0, y: 0, z: 0}
   waste: {fileID: 0}
+  waste_info: {fileID: 4900000, guid: 4916898261218a952a7409101dd4cf86, type: 3}
 --- !u!4 &1721352958
 Transform:
   m_ObjectHideFlags: 0

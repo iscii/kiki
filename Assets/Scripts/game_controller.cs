@@ -13,23 +13,19 @@ public class game_controller : MonoBehaviour
     public Vector3 mouse_world_pos;  // position of the mouse relative to world coordinates
     [HideInInspector]   //waste is public for other scripts to reference, but we don't need it to clutter the inspector. it'll be dynamically instantiated.
     public GameObject waste;    //waste object returned from instantiation. public so we can reference from player behavior
-    public ArrayList waste_arr = new ArrayList();
+    public ArrayList waste_arr = new ArrayList();   //global array of waste
     private GameObject map;
-
-
+    [SerializeField] public TextAsset waste_info;
+    //private Wastes pile;
+    //ඞ
     //variable spawnrate
 
     // Start is called before the first frame update
     void Start()
     {        
-        // path = Application.dataPath + "/ScoreRecords.json";
-        // jsonString = File.ReadAllText (path); 
-        // ListaRecords listaRecords = JsonUtility.FromJson<ListaRecords> (jsonString);
-        // print(listaRecords);
-        // foreach(Record record in listaRecords){
-        //     Debug.Log ("nombre: " + record.name + "score: " + record.score);
-        // }
-        
+        //error in parameter here
+        //pile = JsonUtility.FromJson<Wastes>(waste_info.text);
+
         //instead of doing this, use a sprite.
         Cursor.SetCursor(cursor_pointer, new Vector2(cursor_pointer.width/2, cursor_pointer.height/10), CursorMode.Auto);
 
@@ -48,6 +44,4 @@ public class game_controller : MonoBehaviour
         mouse_world_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouse_world_pos.z = 0;  // zero out the z component bc 2d game
     }
-
-    
 }
