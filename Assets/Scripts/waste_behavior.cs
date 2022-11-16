@@ -35,9 +35,7 @@ public class waste_behavior : MonoBehaviour
     }
 
     private void OnMouseDown(){
-        Debug.Log("click");
         if (in_range){
-            Debug.Log("nut");
             Destroy(gameObject.GetComponent<Renderer>());
             Destroy(gameObject.GetComponent<BoxCollider2D>());
         }
@@ -45,14 +43,12 @@ public class waste_behavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.name == "player"){
-            Debug.Log("Inside");
             in_range = true;
         }
     }
 
     private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.name == "player"){
-            Debug.Log("Outside");
             in_range = false;
         }
     }
