@@ -34,20 +34,26 @@ public class waste_behavior : MonoBehaviour
         // Cursor.SetCursor(gc.cursorPointer, new Vector2(gc.cursorPointer.width/2, gc.cursorPointer.height/10), CursorMode.Auto);
     }
 
-    private void OnMouseOver(){
-        if (Input.GetMouseButtonDown(0)){
-            if (in_range){
-                Destroy(gameObject.GetComponent<Renderer>());
-                Destroy(gameObject.GetComponent<BoxCollider2D>());
-            }
+    private void OnMouseDown(){
+        Debug.Log("click");
+        if (in_range){
+            Debug.Log("nut");
+            Destroy(gameObject.GetComponent<Renderer>());
+            Destroy(gameObject.GetComponent<BoxCollider2D>());
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        in_range = true;
+        if(other.gameObject.name == "player"){
+            Debug.Log("Inside");
+            in_range = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other) {
-        in_range = false;
+        if(other.gameObject.name == "player"){
+            Debug.Log("Outside");
+            in_range = false;
+        }
     }
 }
