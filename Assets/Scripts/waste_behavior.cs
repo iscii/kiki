@@ -12,6 +12,7 @@ public class waste_behavior : MonoBehaviour
     private BoxCollider2D col;
     private bool in_range;
     public bool in_hand, in_truck;
+    private Color startcolor;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +29,17 @@ public class waste_behavior : MonoBehaviour
     
     private void OnMouseEnter() {
         // Cursor.SetCursor(gc.cursorHand, new Vector2(gc.cursorHand.width/2, gc.cursorHand.height/10), CursorMode.Auto);
+        if (in_range){
+            startcolor = gameObject.GetComponent<Renderer>().material.color;
+            gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+        }
     }
 
     private void OnMouseExit() {
         // Cursor.SetCursor(gc.cursorPointer, new Vector2(gc.cursorPointer.width/2, gc.cursorPointer.height/10), CursorMode.Auto);
+        if (gameObject.GetComponent<Renderer>().material.color != startcolor){
+            gameObject.GetComponent<Renderer>().material.color = startcolor; 
+        }
     }
 
     private void OnMouseOver(){
