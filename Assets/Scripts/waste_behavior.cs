@@ -10,7 +10,9 @@ public class waste_behavior : MonoBehaviour
     //gameObject variables
     public string desc;
     private BoxCollider2D col;
-    private bool in_range;
+    [SerializeField] private bool in_range;
+    [SerializeField] private bool clicked;
+    [SerializeField] private bool mouse;
     public bool in_hand, in_truck;
     private Color startcolor;
     // Start is called before the first frame update
@@ -19,6 +21,9 @@ public class waste_behavior : MonoBehaviour
         gc = GameObject.Find("game").GetComponent<game_controller>();
         player_collider = GameObject.Find("player").GetComponent<CircleCollider2D>();
         col = gameObject.GetComponent<BoxCollider2D>();
+        clicked = false;
+        startcolor = gameObject.GetComponent<Renderer>().material.color;
+        mouse = false;
     }
 
     // Update is called once per frame
@@ -29,21 +34,23 @@ public class waste_behavior : MonoBehaviour
     
     private void OnMouseEnter() {
         // Cursor.SetCursor(gc.cursorHand, new Vector2(gc.cursorHand.width/2, gc.cursorHand.height/10), CursorMode.Auto);
-        if (in_range){
-            startcolor = gameObject.GetComponent<Renderer>().material.color;
+        mouse = true;
+        if (in_range && !clicked){
             gameObject.GetComponent<Renderer>().material.color = Color.yellow;
         }
     }
 
     private void OnMouseExit() {
         // Cursor.SetCursor(gc.cursorPointer, new Vector2(gc.cursorPointer.width/2, gc.cursorPointer.height/10), CursorMode.Auto);
-        if (gameObject.GetComponent<Renderer>().material.color != startcolor){
-            gameObject.GetComponent<Renderer>().material.color = startcolor; 
-        }
+            mouse = false;
+            if (!clicked){
+                gameObject.GetComponent<Renderer>().material.color = startcolor; 
+            }
     }
 
     private void OnMouseDown(){
         if (in_range){
+            clicked = true;
             Destroy(gameObject.GetComponent<Renderer>());
             Destroy(gameObject.GetComponent<BoxCollider2D>());
         }
