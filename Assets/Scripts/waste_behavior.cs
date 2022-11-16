@@ -42,20 +42,22 @@ public class waste_behavior : MonoBehaviour
         }
     }
 
-    private void OnMouseOver(){
-        if (Input.GetMouseButtonDown(0)){
-            if (in_range){
-                Destroy(gameObject.GetComponent<Renderer>());
-                Destroy(gameObject.GetComponent<BoxCollider2D>());
-            }
+    private void OnMouseDown(){
+        if (in_range){
+            Destroy(gameObject.GetComponent<Renderer>());
+            Destroy(gameObject.GetComponent<BoxCollider2D>());
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        in_range = true;
+        if(other.gameObject.name == "player"){
+            in_range = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other) {
-        in_range = false;
+        if(other.gameObject.name == "player"){
+            in_range = false;
+        }
     }
 }

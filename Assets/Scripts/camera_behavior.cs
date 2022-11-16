@@ -24,20 +24,20 @@ public class camera_behavior : MonoBehaviour
     }
 
     void FollowPlayer()
-        {
-            if(cam_bounds.x < (map.transform.position.x + gc.map_border.x) && player_pos.x > (pos.x + free_move_border.x)){  //to the right of free border
-                pos.x += Mathf.Abs(player_pos.x - (pos.x + free_move_border.x));
-            }
-            if((cam_bounds.x - 2*diff_x) > (map.transform.position.x - gc.map_border.x) && player_pos.x < (pos.x - free_move_border.x)){  //to the left of free border
-                pos.x -= Mathf.Abs(player_pos.x - (pos.x - free_move_border.x));
-            }
-            if(cam_bounds.y < (map.transform.position.y + gc.map_border.y) && player_pos.y > (pos.y + free_move_border.y)){  //to the top of free border
-                pos.y += Mathf.Abs(player_pos.y - (pos.y + free_move_border.y));
-            }
-            if((cam_bounds.y - 2*diff_y) > (map.transform.position.y - gc.map_border.y) && player_pos.y < (pos.y - free_move_border.y)){  //to the bottom of free border
-                pos.y -= Mathf.Abs(player_pos.y - (pos.y - free_move_border.y));
-            }
+    {
+        if(cam_bounds.x < (map.transform.position.x + gc.map_border.x) && player_pos.x > (pos.x + free_move_border.x)){  //to the right of free border
+            pos.x += Mathf.Abs(player_pos.x - (pos.x + free_move_border.x));
         }
+        if((cam_bounds.x - 2*diff_x) > (map.transform.position.x - gc.map_border.x) && player_pos.x < (pos.x - free_move_border.x)){  //to the left of free border
+            pos.x -= Mathf.Abs(player_pos.x - (pos.x - free_move_border.x));
+        }
+        if(cam_bounds.y < (map.transform.position.y + gc.map_border.y) && player_pos.y > (pos.y + free_move_border.y)){  //to the top of free border
+            pos.y += Mathf.Abs(player_pos.y - (pos.y + free_move_border.y));
+        }
+        if((cam_bounds.y - 2*diff_y) > (map.transform.position.y - gc.map_border.y) && player_pos.y < (pos.y - free_move_border.y)){  //to the bottom of free border
+            pos.y -= Mathf.Abs(player_pos.y - (pos.y - free_move_border.y));
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
