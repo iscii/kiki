@@ -6,16 +6,13 @@ public class waste_behavior : MonoBehaviour
 {
     //references
     private game_controller gc;
-    //gameObject variables
-    public string desc;
-    //instead of in_hand or in_truck, just change the waste's parent. default it's a child of a slot.
-    public bool in_hand, in_truck;
-    private Color startcolor;
+    //gameObject variables  
+    public string size, desc;
+
     // Start is called before the first frame update
     void Start()
     {
         gc = GameObject.Find("game").GetComponent<game_controller>();
-        startcolor = gameObject.GetComponent<Renderer>().material.color;
     }
 
     // Update is called once per frame
