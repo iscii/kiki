@@ -6,6 +6,7 @@ public class slot_behavior : MonoBehaviour
 {
     private game_controller gc;
     private CircleCollider2D player_collider;
+    public string size;
     [SerializeField] private bool in_range;
     // [SerializeField] private bool clicked, mouse;
 
