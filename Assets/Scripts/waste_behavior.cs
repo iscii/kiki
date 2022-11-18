@@ -20,29 +20,4 @@ public class waste_behavior : MonoBehaviour
     {
         
     }
-    /*
-    private void OnMouseEnter() {
-        // Cursor.SetCursor(gc.cursorHand, new Vector2(gc.cursorHand.width/2, gc.cursorHand.height/10), CursorMode.Auto);
-        mouse = true;
-        if (in_range && !clicked){
-            gameObject.GetComponent<Renderer>().material.color = Color.yellow;
-        }
-    }
-
-    private void OnMouseExit() {
-        // Cursor.SetCursor(gc.cursorPointer, new Vector2(gc.cursorPointer.width/2, gc.cursorPointer.height/10), CursorMode.Auto);
-            mouse = false;
-            if (!clicked){
-                gameObject.GetComponent<Renderer>().material.color = startcolor; 
-            }
-    }
-
-    private void OnMouseDown(){
-        if (in_range){
-            clicked = true;
-            Destroy(gameObject.GetComponent<Renderer>());
-            Destroy(gameObject.GetComponent<BoxCollider2D>());
-        }
-    }
-    */
 }
