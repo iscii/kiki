@@ -20,8 +20,10 @@ public class game_controller : MonoBehaviour
     //ඞ
     //variable spawnrate
 
-    // Start is called before the first frame update
-    void Start()
+    // Documentation: Awake is called before start, after all objects are initialized so you can safely speak to other objects
+    // Because of this, you should use Awake to set up references between scripts, and use Start() to pass any information back and forth
+    // TODO: use awake and start accordingly so we can reduce future bugs in program
+    void Awake()
     {        
         //error in parameter here
         pile = JsonUtility.FromJson<Wastes>(waste_info.text);
@@ -48,6 +50,7 @@ public class game_controller : MonoBehaviour
             
             waste = Instantiate<GameObject>(waste_prefab, new Vector3(0, 3.5f, 0), Quaternion.identity);    //spawn waste
             waste.transform.parent = map.transform.GetChild(i);     //sets waste's parent to slot
+            waste.transform.position = waste.transform.parent.position;
             waste_arr.Add(waste);   //maybe we don't need this if we can track everything by children
         }
     }
