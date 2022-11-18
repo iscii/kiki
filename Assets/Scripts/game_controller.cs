@@ -6,8 +6,7 @@ public class game_controller : MonoBehaviour
 {
     //inspector references
     [SerializeField] private GameObject waste_prefab;     //prefab reference, public so we can drag the prefab into inspector
-    [SerializeField] private Texture2D cursor_pointer;
-    [SerializeField] private Texture2D cursor_hand;
+    public Texture2D cursor_pointer,cursor_hand;
     //game variables
     public Vector2 map_border;
     public Vector3 mouse_world_pos;  // position of the mouse relative to world coordinates
@@ -32,10 +31,10 @@ public class game_controller : MonoBehaviour
         map = GameObject.Find("pfc_map");
         map_border = map.transform.localScale / 2;  //gets x and y of map scale /2 and puts it into vector2 map_border as offsets
 
-        waste = Instantiate<GameObject>(waste_prefab, new Vector3(0, 3.5f, 0), Quaternion.identity);
-        waste = Instantiate<GameObject>(waste_prefab, new Vector3(5, 3.5f, 0), Quaternion.identity);
-        waste = Instantiate<GameObject>(waste_prefab, new Vector3(3, 3.5f, 0), Quaternion.identity);
-        waste_arr.Add(waste);
+        // waste = Instantiate<GameObject>(waste_prefab, new Vector3(0, 3.5f, 0), Quaternion.identity);
+        // waste = Instantiate<GameObject>(waste_prefab, new Vector3(5, 3.5f, 0), Quaternion.identity);
+        // waste = Instantiate<GameObject>(waste_prefab, new Vector3(3, 3.5f, 0), Quaternion.identity);
+        // waste_arr.Add(waste);
     }
 
     // Update is called once per frame
