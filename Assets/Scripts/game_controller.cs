@@ -47,7 +47,7 @@ public class game_controller : MonoBehaviour
     void spawnWaste(){
         for(int i=0; i<map.transform.childCount;i++){
             //TODO: implement size checking
-            
+                
             waste = Instantiate<GameObject>(waste_prefab, new Vector3(0, 3.5f, 0), Quaternion.identity);    //spawn waste
             waste.transform.parent = map.transform.GetChild(i);     //sets waste's parent to slot
             waste.transform.position = waste.transform.parent.position;

@@ -5,8 +5,7 @@ using UnityEngine;
 public class slot_behavior : MonoBehaviour
 {
     private game_controller gc;
-    private CircleCollider2D player_collider;
-    private GameObject my_waste;
+    private GameObject player, my_waste;
     public string size;
     [SerializeField] private bool in_range, mouse_over;
     private Color startcolor;
@@ -16,8 +15,8 @@ public class slot_behavior : MonoBehaviour
     void Start()
     {
         gc = GameObject.Find("game").GetComponent<game_controller>();
+        player = GameObject.Find("player");
         startcolor = gameObject.GetComponent<Renderer>().material.color;
-        player_collider = GameObject.Find("player").GetComponent<CircleCollider2D>();
         my_waste = transform.GetChild(0).gameObject;
     }
 
@@ -51,10 +50,10 @@ public class slot_behavior : MonoBehaviour
     private void OnMouseDown()
     {
         // Debug.Log("click");
-        if (in_range && my_waste.GetComponent<Renderer>().enabled)  //we'll use the renderer component to check if the waste is in hand or not
+        if (in_range && my_waste.GetComponent<Renderer>().enabled && player.transform.childCount == 0)  //we'll use the renderer component to check if the waste is in hand or not
         {
-            //TODO: make parent player
             my_waste.GetComponent<Renderer>().enabled = false;
+            my_waste.transform.parent = player.transform;   //make the player the waste's parent
         }
     }
 
