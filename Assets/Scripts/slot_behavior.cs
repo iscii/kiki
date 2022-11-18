@@ -65,7 +65,7 @@ public class slot_behavior : MonoBehaviour
         if (!in_range && other.gameObject.name.Equals("player"))
         {
             in_range = true;
-            //FIXME: instead, check if mouse is over
+            //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
             if (mouse_over && my_waste.GetComponent<Renderer>().enabled)
             {
                 my_waste.GetComponent<Renderer>().material.color = Color.yellow;
@@ -80,7 +80,6 @@ public class slot_behavior : MonoBehaviour
         if (in_range && other.gameObject.name.Equals("player"))
         {
             in_range = false;
-            //FIXME: instead, check if mouse is over
             //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
             if (mouse_over && my_waste.GetComponent<Renderer>().enabled)
             {
