@@ -9,10 +9,12 @@ public class Wastes{
     public Waste[] small;
     public Waste[] medium;
     public Waste[] big;
+    public Waste[][] accessor;
 }
 
 [Serializable]
 public class Waste{
     public string name;
     public string desc;
+    public int size;
 }

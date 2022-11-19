@@ -6,7 +6,7 @@ public class slot_behavior : MonoBehaviour
 {
     private game_controller gc;
     private GameObject player, my_waste;
-    public string size;
+    public int size;
     [SerializeField] private bool in_range, mouse_over;
     private Color startcolor;
 
@@ -50,8 +50,14 @@ public class slot_behavior : MonoBehaviour
     private void OnMouseDown()
     {
         // Debug.Log("click");
-        if (in_range && my_waste.GetComponent<Renderer>().enabled && player.transform.childCount == 0)  //we'll use the renderer component to check if the waste is in hand or not
+        if(player.transform.childCount > 0) 
         {
+            Debug.Log("You're holding something already!");
+            return; 
+        }
+        if (in_range && my_waste.GetComponent<Renderer>().enabled)  //we'll use the renderer component to check if the waste is in hand or not
+        {
+            Debug.Log("You've picked up a(n) " + my_waste.name);
             my_waste.GetComponent<Renderer>().enabled = false;
             my_waste.transform.parent = player.transform;   //make the player the waste's parent
         }

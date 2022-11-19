@@ -27,6 +27,7 @@ public class game_controller : MonoBehaviour
     {        
         //error in parameter here
         pile = JsonUtility.FromJson<Wastes>(waste_info.text);
+        pile.accessor = new Waste[3][] {pile.small, pile.medium, pile.big};
 
         //instead of doing this, use a sprite.
         Cursor.SetCursor(cursor_pointer, new Vector2(cursor_pointer.width/2, cursor_pointer.height/10), CursorMode.Auto);
@@ -46,10 +47,22 @@ public class game_controller : MonoBehaviour
 
     void spawnWaste(){
         for(int i=0; i<map.transform.childCount;i++){
-            //TODO: implement size checking
+            Transform slot = map.transform.GetChild(i);
+            int size = slot.gameObject.GetComponent<slot_behavior>().size;
                 
-            waste = Instantiate<GameObject>(waste_prefab, new Vector3(0, 3.5f, 0), Quaternion.identity);    //spawn waste
-            waste.transform.parent = map.transform.GetChild(i);     //sets waste's parent to slot
+            //spawn waste
+            waste = Instantiate<GameObject>(waste_prefab, new Vector3(0, 3.5f, 0), Quaternion.identity);    
+            waste.transform.parent = slot;     //sets waste's parent to slot
+
+            // get random object
+            int lottery = Random.Range(0, pile.accessor[size].Length);
+            Waste winner = pile.accessor[size][lottery];
+
+            // set waste's properties to this object
+            waste.name = winner.name;
+            waste.GetComponent<waste_behavior>().desc = winner.desc;
+            waste.GetComponent<waste_behavior>().size = size;
+
             waste.transform.position = waste.transform.parent.position;
             waste_arr.Add(waste);   //maybe we don't need this if we can track everything by children
         }

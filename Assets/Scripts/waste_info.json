@@ -2,61 +2,61 @@
     "small":[
         {
             "name": "PDP", 
-            "description": "",
+            "desc": "",
             "size": 1
         },
         {
             "name": "Apple II",
-            "description": "",
+            "desc": "",
             "size": 1
         },
         {
             "name": "Macintosh",
-            "description": "",
+            "desc": "",
             "size": 1
         },
         {
             "name": "APF Imagination Machine",
-            "description": "",
+            "desc": "",
             "size": 1
         },
         {
             "name": "Walkman",
-            "description": "",
+            "desc": "",
             "size": 1
         }
     ],
     "medium":[
         {
             "name": "IBM PC",
-            "description": "",
+            "desc": "",
             "size": 2
         },
         {
             "name": "iPod Classic",
-            "description": "",
+            "desc": "",
             "size": 2
         },
         {
             "name": "Atari 2600",
-            "description": "",
+            "desc": "",
             "size": 2
         }
     ],
     "big":[
         {
             "name": "HP-01",
-            "description": "",
+            "desc": "",
             "size": 3
         },
         {
             "name": "Bakelite Phone",
-            "description": "",
+            "desc": "",
             "size": 3
         },
         {
             "name": "Ericsson DBH 1001",
-            "description": "",
+            "desc": "",
             "size": 3
         }
     ]

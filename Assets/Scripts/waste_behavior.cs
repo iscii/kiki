@@ -7,7 +7,8 @@ public class waste_behavior : MonoBehaviour
     //references
     private game_controller gc;
     //gameObject variables  
-    public string size, desc;
+    public int size;
+    public string desc;
 
     // Start is called before the first frame update
     void Start()
