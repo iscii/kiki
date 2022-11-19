@@ -5,9 +5,8 @@ using UnityEngine;
 public class slot_behavior : MonoBehaviour
 {
     private game_controller gc;
-    private CircleCollider2D player_collider;
-    private GameObject my_waste;
-    public string size;
+    private GameObject player, my_waste;
+    public int size;
     [SerializeField] private bool in_range, mouse_over;
     private Color startcolor;
 
@@ -16,8 +15,8 @@ public class slot_behavior : MonoBehaviour
     void Start()
     {
         gc = GameObject.Find("game").GetComponent<game_controller>();
+        player = GameObject.Find("player");
         startcolor = gameObject.GetComponent<Renderer>().material.color;
-        player_collider = GameObject.Find("player").GetComponent<CircleCollider2D>();
         my_waste = transform.GetChild(0).gameObject;
     }
 
@@ -51,21 +50,27 @@ public class slot_behavior : MonoBehaviour
     private void OnMouseDown()
     {
         // Debug.Log("click");
+        if(player.transform.childCount > 0) 
+        {
+            Debug.Log("You're holding something already!");
+            return; 
+        }
         if (in_range && my_waste.GetComponent<Renderer>().enabled)  //we'll use the renderer component to check if the waste is in hand or not
         {
-            //TODO: make parent player
+            Debug.Log("You've picked up a(n) " + my_waste.name);
             my_waste.GetComponent<Renderer>().enabled = false;
+            my_waste.transform.parent = player.transform;   //make the player the waste's parent
         }
     }
 
     // Fires once when a collider enters this object's collider
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // Debug.Log("in range");
+        // Debug.Log("collision enter");
         if (!in_range && other.gameObject.name.Equals("player"))
         {
             in_range = true;
-            //FIXME: instead, check if mouse is over
+            //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
             if (mouse_over && my_waste.GetComponent<Renderer>().enabled)
             {
                 my_waste.GetComponent<Renderer>().material.color = Color.yellow;
@@ -76,11 +81,13 @@ public class slot_behavior : MonoBehaviour
     // Fires once when a collider exits this object's collider
     private void OnCollisionExit2D(Collision2D other)
     {
-        // Debug.Log("out of range");
-        if (in_range && other.gameObject.name.Equals("player"))
+        // Debug.Log("collision exit");
+        
+        //check if collision is player and player is completely out of range
+        if (in_range && other.gameObject.name.Equals("player") &&
+            !other.gameObject.GetComponent<CircleCollider2D>().IsTouching(gameObject.GetComponent<BoxCollider2D>()))
         {
             in_range = false;
-            //FIXME: instead, check if mouse is over
             //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
             if (mouse_over && my_waste.GetComponent<Renderer>().enabled)
             {
