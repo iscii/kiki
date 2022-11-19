@@ -66,7 +66,7 @@ public class slot_behavior : MonoBehaviour
     // Fires once when a collider enters this object's collider
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // Debug.Log("in range");
+        // Debug.Log("collision enter");
         if (!in_range && other.gameObject.name.Equals("player"))
         {
             in_range = true;
@@ -81,8 +81,11 @@ public class slot_behavior : MonoBehaviour
     // Fires once when a collider exits this object's collider
     private void OnCollisionExit2D(Collision2D other)
     {
-        // Debug.Log("out of range");
-        if (in_range && other.gameObject.name.Equals("player"))
+        // Debug.Log("collision exit");
+        
+        //check if collision is player and player is completely out of range
+        if (in_range && other.gameObject.name.Equals("player") &&
+            !other.gameObject.GetComponent<CircleCollider2D>().IsTouching(gameObject.GetComponent<BoxCollider2D>()))
         {
             in_range = false;
             //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
