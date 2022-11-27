@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 191092150}
   - component: {fileID: 191092149}
   - component: {fileID: 191092148}
+  - component: {fileID: 191092151}
   m_Layer: 7
   m_Name: truck-kun
   m_TagString: Truck
@@ -399,6 +400,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &191092151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191092147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8870b6afb2e0d641875b68598bf8c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  in_range: 0
+  mouse_over: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
