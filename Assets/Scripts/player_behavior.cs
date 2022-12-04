@@ -36,7 +36,8 @@ public class player_behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //TODO: make this movement physics based and put it into FixedUpdate() instead of Update(). This is necessary for wall collision
+        
         float update_constant = accel*Time.deltaTime;
         if (Input.GetKey("w") && velocity.y >= 0){
             if (velocity.x == 0){
@@ -83,5 +84,11 @@ public class player_behavior : MonoBehaviour
 
         transform.position = pos;
         transform.rotation = rot;
+    }
+
+    void FixedUpdate() {
+        // if (Input.GetKey("w")){
+        //     GetComponent<Rigidbody2D>().velocity = new Vector2(0, 2);
+        // }
     }
 }

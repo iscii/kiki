@@ -34,7 +34,7 @@ public class game_controller : MonoBehaviour
 
         map = GameObject.Find("pfc_map");
         map_border = map.transform.localScale / 2;  //gets x and y of map scale /2 and puts it into vector2 map_border as offsets
-        
+
         spawnWaste();
     }
 
@@ -67,4 +67,4 @@ public class game_controller : MonoBehaviour
             waste_arr.Add(waste);   //maybe we don't need this if we can track everything by children
         }
     }
-}
+}﻿
