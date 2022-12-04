@@ -29,7 +29,7 @@ public class slot_behavior : MonoBehaviour
     // Fires once when mouse is over collider
     private void OnMouseEnter()
     {
-        // Debug.Log("enter");
+        Debug.Log("mouse enter");
         Cursor.SetCursor(gc.cursor_hand, new Vector2(gc.cursor_hand.width / 2, gc.cursor_hand.height / 10), CursorMode.Auto);
         mouse_over = true;
         if (in_range)
@@ -39,7 +39,7 @@ public class slot_behavior : MonoBehaviour
     // Fires once when mouse exits collider
     private void OnMouseExit()
     {
-        // Debug.Log("exit");
+        Debug.Log("mouse exit");
         Cursor.SetCursor(gc.cursor_pointer, new Vector2(gc.cursor_pointer.width / 2, gc.cursor_pointer.height / 10), CursorMode.Auto);
         mouse_over = false;
         if (in_range)
@@ -49,7 +49,7 @@ public class slot_behavior : MonoBehaviour
     // Fires once when mouse clicks on collider
     private void OnMouseDown()
     {
-        // Debug.Log("click");
+        Debug.Log("click");
         if(!in_range){
             Debug.Log("You're not in range!");
             return;
@@ -68,9 +68,9 @@ public class slot_behavior : MonoBehaviour
     }
 
     // Fires once when a collider enters this object's collider
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        // Debug.Log("collision enter");
+        Debug.Log("collision enter");
         if (!in_range && other.gameObject.name.Equals("player"))
         {
             in_range = true;
@@ -83,9 +83,9 @@ public class slot_behavior : MonoBehaviour
     }
 
     // Fires once when a collider exits this object's collider
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        // Debug.Log("collision exit");
+        Debug.Log("collision exit");
         
         //check if collision is player and player is completely out of range
         if (in_range && other.gameObject.name.Equals("player") &&
