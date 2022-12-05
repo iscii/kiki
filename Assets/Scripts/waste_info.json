@@ -1,22 +1,12 @@
 {
     "small":[
         {
-            "name": "PDP", 
+            "name": "HP-01",
             "desc": "",
             "size": 1
         },
         {
-            "name": "Apple II",
-            "desc": "",
-            "size": 1
-        },
-        {
-            "name": "Macintosh",
-            "desc": "",
-            "size": 1
-        },
-        {
-            "name": "APF Imagination Machine",
+            "name": "iPod Classic",
             "desc": "",
             "size": 1
         },
@@ -28,12 +18,17 @@
     ],
     "medium":[
         {
-            "name": "IBM PC",
+            "name": "Bakelite Phone",
             "desc": "",
             "size": 2
         },
         {
-            "name": "iPod Classic",
+            "name": "Ericsson DBH 1001",
+            "desc": "",
+            "size": 2
+        },
+        {
+            "name": "Macintosh",
             "desc": "",
             "size": 2
         },
@@ -41,21 +36,26 @@
             "name": "Atari 2600",
             "desc": "",
             "size": 2
+        },
+        {
+            "name": "Apple II",
+            "desc": "",
+            "size": 2
+        },
+        {
+            "name": "PDP", 
+            "desc": "",
+            "size": 2
         }
     ],
     "big":[
         {
-            "name": "HP-01",
+            "name": "APF Imagination Machine",
             "desc": "",
             "size": 3
         },
         {
-            "name": "Bakelite Phone",
-            "desc": "",
-            "size": 3
-        },
-        {
-            "name": "Ericsson DBH 1001",
+            "name": "IBM PC",
             "desc": "",
             "size": 3
         }
