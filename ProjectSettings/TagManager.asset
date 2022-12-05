@@ -7,6 +7,8 @@ TagManager:
   - Truck
   - Slot
   - Waste
+  - UI Button
+  - UI Display
   layers:
   - Default
   - TransparentFX
@@ -55,4 +57,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3254366317
+    locked: 0
+  - name: UI
+    uniqueID: 2510038043
     locked: 0
