@@ -67,6 +67,7 @@ public class slot_behavior : MonoBehaviour
             Debug.Log("You've picked up a(n) " + my_waste.name);
             my_waste.GetComponent<Renderer>().enabled = false;
             my_waste.transform.parent = player.transform;   //make the player the waste's parent
+            player.GetComponent<player_behavior>().pickup_state(true);
         }
     }
 

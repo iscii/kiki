@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 47432572}
   - component: {fileID: 47432571}
   - component: {fileID: 47432573}
+  - component: {fileID: 47432574}
   m_Layer: 2
   m_Name: player
   m_TagString: Player
@@ -285,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a569cc939a67442a5aac8d9ebd41cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 47432574}
   pos: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!70 &47432571
@@ -340,6 +342,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &47432574
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47432567}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a2f0e86ec0fd8de829c5a03a1fd0aa47, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &66933820
 GameObject:
   m_ObjectHideFlags: 0
@@ -4997,7 +5019,7 @@ GameObject:
   - component: {fileID: 1284131608}
   - component: {fileID: 1284131607}
   m_Layer: 6
-  m_Name: tilemap grid (1)
+  m_Name: tilemap grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class player_behavior : MonoBehaviour
 {
+    public Animator animator;
     [SerializeField] private Vector3 pos;
     private Quaternion rot;     // player rotation
     private game_controller gc;    // to access game_controller values
@@ -15,6 +16,9 @@ public class player_behavior : MonoBehaviour
     private float max_speed;
     private float accel;
     private GameObject waste;
+    // [SerializeField] private Sprite kiki_full;
+    // [SerializeField] private Sprite kiki_empty;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,5 +94,9 @@ public class player_behavior : MonoBehaviour
         // if (Input.GetKey("w")){
         //     GetComponent<Rigidbody2D>().velocity = new Vector2(0, 2);
         // }
+    }
+
+    public void pickup_state(bool holding){
+        animator.SetBool("is_holding", holding);
     }
 }

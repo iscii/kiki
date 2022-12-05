@@ -50,6 +50,7 @@ public class truck_behavior : MonoBehaviour
             my_waste = player.transform.GetChild(0).gameObject;
             Debug.Log("You've dropped off a(n) " + my_waste.name);
             my_waste.transform.parent = gameObject.transform;   //make the player the waste's parent
+            player.GetComponent<player_behavior>().pickup_state(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
