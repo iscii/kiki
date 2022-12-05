@@ -57,7 +57,7 @@ public class camera_behavior : MonoBehaviour
     {
         pos = transform.position;
         player_pos = player.transform.position;
-        cam_bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0)); //gets right and top bounds of cam (relative to position)   
+        cam_bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width + 5f, Screen.height + 5f, 0)); //gets right and top bounds of cam (relative to position)   
         diff_x = cam_bounds.x - pos.x;     
         diff_y = cam_bounds.y - pos.y;
 
