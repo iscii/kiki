@@ -58,9 +58,9 @@ TagManager:
   - name: Player
     uniqueID: 3254366317
     locked: 0
-  - name: UI
-    uniqueID: 2510038043
-    locked: 0
   - name: Map-Upper
     uniqueID: 3594371299
+    locked: 0
+  - name: UI
+    uniqueID: 2510038043
     locked: 0

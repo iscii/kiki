@@ -42,58 +42,69 @@ public class player_behavior : MonoBehaviour
     {
         //TODO: make this movement physics based and put it into FixedUpdate() instead of Update(). This is necessary for wall collision
         
-        float update_constant = accel*Time.deltaTime;
-        if (Input.GetKey("w") && velocity.y >= 0){
-            if (velocity.x == 0){
-                velocity.y += update_constant;
-            } else {
-                velocity.y = Mathf.Abs(velocity.x) + update_constant;
-            }
-        } 
-        else if (Input.GetKey("s") && velocity.y <= 0){
-            if (velocity.x == 0){
-                velocity.y -= update_constant;
-            } else {
-                velocity.y = -1*(Mathf.Abs(velocity.x) + update_constant);
-            }
-        } else {
-            velocity.y = 0;
-        }
-        if (Input.GetKey("a") && velocity.x <= 0){
-            if (velocity.y == 0){
-                velocity.x -= update_constant;
-            } else {
-                velocity.x = -1*Mathf.Abs(velocity.y);
-            }
-        }
-        else if(Input.GetKey("d")&& velocity.x >= 0){  
-            if (velocity.y == 0) {
-                velocity.x += update_constant;
-            } else {
-                velocity.x = Mathf.Abs(velocity.y);
-            }
-        } else {
-            velocity.x = 0;
-        }
+        // float update_constant = accel*Time.deltaTime;
+        // if (Input.GetKey("w") && velocity.y >= 0){
+        //     if (velocity.x == 0){
+        //         velocity.y += update_constant;
+        //     } else {
+        //         velocity.y = Mathf.Abs(velocity.x) + update_constant;
+        //     }
+        // } 
+        // else if (Input.GetKey("s") && velocity.y <= 0){
+        //     if (velocity.x == 0){
+        //         velocity.y -= update_constant;
+        //     } else {
+        //         velocity.y = -1*(Mathf.Abs(velocity.x) + update_constant);
+        //     }
+        // } else {
+        //     velocity.y = 0;
+        // }
+        // if (Input.GetKey("a") && velocity.x <= 0){
+        //     if (velocity.y == 0){
+        //         velocity.x -= update_constant;
+        //     } else {
+        //         velocity.x = -1*Mathf.Abs(velocity.y);
+        //     }
+        // }
+        // else if(Input.GetKey("d")&& velocity.x >= 0){  
+        //     if (velocity.y == 0) {
+        //         velocity.x += update_constant;
+        //     } else {
+        //         velocity.x = Mathf.Abs(velocity.y);
+        //     }
+        // } else {
+        //     velocity.x = 0;
+        // }
 
-        velocity = Vector3.ClampMagnitude(velocity, max_speed);
+        // velocity = Vector3.ClampMagnitude(velocity, max_speed);
 
-        pos += velocity*Time.deltaTime;
+        // pos += velocity*Time.deltaTime;
     
-        rot = Quaternion.Euler(0, 0, Mathf.Atan2(gc.mouse_world_pos.y-pos.y, gc.mouse_world_pos.x-pos.x)*Mathf.Rad2Deg-90);
+        // rot = Quaternion.Euler(0, 0, Mathf.Atan2(gc.mouse_world_pos.y-pos.y, gc.mouse_world_pos.x-pos.x)*Mathf.Rad2Deg-90);
 
-        // clamp the player's position so they can't leave the map
-        pos.x = Mathf.Clamp(pos.x, (gc.map_border.x - player_width/2)*-1, gc.map_border.x - player_width/2);
-        pos.y = Mathf.Clamp(pos.y, (gc.map_border.y - player_height/2)*-1, gc.map_border.y - player_height/2);
+        // // clamp the player's position so they can't leave the map
+        // pos.x = Mathf.Clamp(pos.x, (gc.map_border.x - player_width/2)*-1, gc.map_border.x - player_width/2);
+        // pos.y = Mathf.Clamp(pos.y, (gc.map_border.y - player_height/2)*-1, gc.map_border.y - player_height/2);
 
-        transform.position = pos;
-        transform.rotation = rot;
+        // transform.position = pos;
+        // transform.rotation = rot;
     }
 
     void FixedUpdate() {
-        // if (Input.GetKey("w")){
-        //     GetComponent<Rigidbody2D>().velocity = new Vector2(0, 2);
-        // }
+        Vector2 velocity = new Vector2(0, 0);
+        if (Input.GetKey("w")){
+            velocity.y += 2;
+        }
+        if (Input.GetKey("s")){
+            velocity.y += -2;
+        }
+        if (Input.GetKey("d")){
+            velocity.x += 2;
+        }
+        if (Input.GetKey("a")){
+            velocity.x += -2;
+        }
+        GetComponent<Rigidbody2D>().velocity = velocity;
     }
 
     public void pickup_state(bool holding){

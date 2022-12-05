@@ -8,16 +8,16 @@ public class slot_behavior : MonoBehaviour
     private GameObject player, my_waste;
     public int size;
     [SerializeField] private bool in_range, mouse_over;
-    private Color startcolor;
-
+    private Sprite my_waste_sprite, my_waste_sprite_highlighted;
 
     // Start is called before the first frame update
     void Start()
     {
         gc = GameObject.Find("game").GetComponent<game_controller>();
         player = GameObject.Find("player");
-        startcolor = gameObject.GetComponent<Renderer>().material.color;
         my_waste = transform.GetChild(0).gameObject;
+        my_waste_sprite = Resources.Load<Sprite>("Waste/" + my_waste.name);
+        my_waste_sprite_highlighted = Resources.Load<Sprite>("Waste_Highlighted/" + my_waste.name);
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class slot_behavior : MonoBehaviour
         Cursor.SetCursor(gc.cursor_hand, new Vector2(gc.cursor_hand.width / 2, gc.cursor_hand.height / 10), CursorMode.Auto);
         mouse_over = true;
         if (in_range)
-            my_waste.GetComponent<Renderer>().material.color = Color.yellow;
+            my_waste.GetComponent<SpriteRenderer>().sprite = my_waste_sprite_highlighted;
     }
 
     // Fires once when mouse exits collider
@@ -45,7 +45,7 @@ public class slot_behavior : MonoBehaviour
         Cursor.SetCursor(gc.cursor_pointer, new Vector2(gc.cursor_pointer.width / 2, gc.cursor_pointer.height / 10), CursorMode.Auto);
         mouse_over = false;
         if (in_range)
-            my_waste.GetComponent<Renderer>().material.color = startcolor;
+            my_waste.GetComponent<SpriteRenderer>().sprite = my_waste_sprite;
     }
 
     // Fires once when mouse clicks on collider
@@ -82,7 +82,7 @@ public class slot_behavior : MonoBehaviour
             //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
             if (mouse_over && my_waste.GetComponent<Renderer>().enabled)
             {
-                my_waste.GetComponent<Renderer>().material.color = Color.yellow;
+                my_waste.GetComponent<SpriteRenderer>().sprite = my_waste_sprite;
             }
         }
     }
@@ -99,8 +99,9 @@ public class slot_behavior : MonoBehaviour
             in_range = false;
             //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
             if (mouse_over && my_waste.GetComponent<Renderer>().enabled)
+                my_waste.GetComponent<SpriteRenderer>().sprite = my_waste_sprite_highlighted;
             {
-                my_waste.GetComponent<Renderer>().material.color = startcolor;
+
             }
         }
     }

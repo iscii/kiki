@@ -7,14 +7,14 @@ public class truck_behavior : MonoBehaviour
     private GameObject player, my_waste;
     private game_controller gc;
     [SerializeField] private bool in_range, mouse_over;
-    private Color startcolor;
+    private Sprite sprite, sprite_highlighted;
     // Start is called before the first frame update
     void Start()
     {
         gc = GameObject.Find("game").GetComponent<game_controller>();
         player = GameObject.Find("player");
-        startcolor = gameObject.GetComponent<Renderer>().material.color;
-        
+        sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+        sprite_highlighted = Resources.Load<Sprite>(gameObject.name + "_highlighted");
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class truck_behavior : MonoBehaviour
         Cursor.SetCursor(gc.cursor_hand, new Vector2(gc.cursor_hand.width / 2, gc.cursor_hand.height / 10), CursorMode.Auto);
         mouse_over = true;
         if (in_range)
-            gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprite_highlighted;
     }
 
     private void OnMouseExit()
@@ -35,7 +35,7 @@ public class truck_behavior : MonoBehaviour
         Cursor.SetCursor(gc.cursor_pointer, new Vector2(gc.cursor_pointer.width / 2, gc.cursor_pointer.height / 10), CursorMode.Auto);
         mouse_over = false;
         if (in_range)
-            gameObject.GetComponent<Renderer>().material.color = startcolor;
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
     }
     private void OnMouseDown()
     {
@@ -62,7 +62,7 @@ public class truck_behavior : MonoBehaviour
             //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
             if (mouse_over)
             {
-                gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprite_highlighted;
             }
         }
     }
@@ -77,7 +77,7 @@ public class truck_behavior : MonoBehaviour
             //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
             if (mouse_over)
             {
-                gameObject.GetComponent<Renderer>().material.color = startcolor;
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
             }
         }
     }
