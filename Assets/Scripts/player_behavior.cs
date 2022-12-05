@@ -34,7 +34,7 @@ public class player_behavior : MonoBehaviour
         velocity = new Vector3(0, 0, 0);
         max_speed = 3f;
         accel = 12f;
-        pos = new Vector3(0, 0, 0);
+        pos = new Vector3(0.275f, 0, 0); //spawn pos
     }
 
     // Update is called once per frame

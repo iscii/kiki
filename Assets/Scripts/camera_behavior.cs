@@ -48,7 +48,7 @@ public class camera_behavior : MonoBehaviour
         player = GameObject.Find("player");
 
         //gameObject variables
-        free_move_border = new Vector2(3f, 2f);
+        free_move_border = new Vector2(3f, 1.5f);
         cam_mode = 0;
     }
 
