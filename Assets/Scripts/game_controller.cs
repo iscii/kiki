@@ -15,6 +15,7 @@ public class game_controller : MonoBehaviour
     public ArrayList waste_arr = new ArrayList();   //global array of waste
     private GameObject map;
     private GameObject slot;
+    private GameObject spawner;
     [SerializeField] public TextAsset waste_info;
     private Wastes pile;
     //ඞ
@@ -34,6 +35,7 @@ public class game_controller : MonoBehaviour
 
         map = GameObject.Find("pfc_map");
         map_border = map.transform.localScale / 2;  //gets x and y of map scale /2 and puts it into vector2 map_border as offsets
+        spawner = GameObject.Find("spawner");
 
         spawnWaste();
     }
@@ -46,8 +48,8 @@ public class game_controller : MonoBehaviour
     }
 
     void spawnWaste(){
-        for(int i=0; i<map.transform.childCount;i++){
-            Transform slot = map.transform.GetChild(i);
+        for(int i=0; i<spawner.transform.childCount;i++){
+            Transform slot = spawner.transform.GetChild(i);
             int size = slot.gameObject.GetComponent<slot_behavior>().size;
                 
             //spawn waste
@@ -59,9 +61,11 @@ public class game_controller : MonoBehaviour
             Waste winner = pile.accessor[size][lottery];
 
             // set waste's properties to this object
+            Debug.Log(winner.name);
             waste.name = winner.name;
             waste.GetComponent<waste_behavior>().desc = winner.desc;
             waste.GetComponent<waste_behavior>().size = size;
+            waste.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Waste/" + winner.name);
 
             waste.transform.position = waste.transform.parent.position;
             waste_arr.Add(waste);   //maybe we don't need this if we can track everything by children

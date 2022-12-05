@@ -52,7 +52,7 @@ public class truck_behavior : MonoBehaviour
             my_waste.transform.parent = gameObject.transform;   //make the player the waste's parent
         }
     }
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.Log("collision enter");
         if (!in_range && other.gameObject.name.Equals("player"))
@@ -65,7 +65,7 @@ public class truck_behavior : MonoBehaviour
             }
         }
     }
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         // Debug.Log("collision exit");
         //check if collision is player and player is completely out of range
