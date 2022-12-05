@@ -13,8 +13,8 @@ public class player_behavior : MonoBehaviour
     private float player_height;
     private CircleCollider2D interact_box;      //interaction box
     [SerializeField] private Vector3 velocity;       //shows var (speed) in inspector so we can modify it but keeps it private
-    private float max_speed;
-    private float accel;
+    private float speed;
+    // private float accel;
     private GameObject waste;
     // [SerializeField] private Sprite kiki_full;
     // [SerializeField] private Sprite kiki_empty;
@@ -32,8 +32,8 @@ public class player_behavior : MonoBehaviour
 
         //gameObject variables
         velocity = new Vector3(0, 0, 0);
-        max_speed = 3f;
-        accel = 12f;
+        speed = 50f;
+        // accel = 12f;
         pos = new Vector3(0.275f, 0, 0); //spawn pos
     }
 
@@ -80,31 +80,37 @@ public class player_behavior : MonoBehaviour
 
         // pos += velocity*Time.deltaTime;
     
-        // rot = Quaternion.Euler(0, 0, Mathf.Atan2(gc.mouse_world_pos.y-pos.y, gc.mouse_world_pos.x-pos.x)*Mathf.Rad2Deg-90);
+        rot = Quaternion.Euler(0, 0, Mathf.Atan2(gc.mouse_world_pos.y-pos.y, gc.mouse_world_pos.x-pos.x)*Mathf.Rad2Deg-90);
 
         // // clamp the player's position so they can't leave the map
-        // pos.x = Mathf.Clamp(pos.x, (gc.map_border.x - player_width/2)*-1, gc.map_border.x - player_width/2);
-        // pos.y = Mathf.Clamp(pos.y, (gc.map_border.y - player_height/2)*-1, gc.map_border.y - player_height/2);
+        pos.x = Mathf.Clamp(pos.x, (gc.map_border.x - player_width/2)*-1, gc.map_border.x - player_width/2);
+        pos.y = Mathf.Clamp(pos.y, (gc.map_border.y - player_height/2)*-1, gc.map_border.y - player_height/2);
 
         // transform.position = pos;
-        // transform.rotation = rot;
+        transform.rotation = rot;
     }
 
     void FixedUpdate() {
         Vector2 velocity = new Vector2(0, 0);
         if (Input.GetKey("w")){
-            velocity.y += 2;
+            velocity.y += speed;
         }
         if (Input.GetKey("s")){
-            velocity.y += -2;
+            velocity.y += -speed;
         }
         if (Input.GetKey("d")){
-            velocity.x += 2;
+            velocity.x += speed;
         }
         if (Input.GetKey("a")){
-            velocity.x += -2;
+            velocity.x += -speed;
         }
-        GetComponent<Rigidbody2D>().velocity = velocity;
+        GetComponent<Rigidbody2D>().velocity = velocity*Time.deltaTime;
+
+        pos.x = Mathf.Clamp(pos.x, (gc.map_border.x - player_width/2)*-1, gc.map_border.x - player_width/2);
+        pos.y = Mathf.Clamp(pos.y, (gc.map_border.y - player_height/2)*-1, gc.map_border.y - player_height/2);
+
+        rot = Quaternion.Euler(0, 0, Mathf.Atan2(gc.mouse_world_pos.y-pos.y, gc.mouse_world_pos.x-pos.x)*Mathf.Rad2Deg-90);
+        transform.rotation = rot;
     }
 
     public void pickup_state(bool holding){
