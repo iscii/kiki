@@ -2773,7 +2773,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 47432574}
-  pos: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!70 &47432571
 CapsuleCollider2D:
@@ -3828,6 +3827,7 @@ GameObject:
   - component: {fileID: 191092150}
   - component: {fileID: 191092149}
   - component: {fileID: 191092148}
+  - component: {fileID: 191092152}
   - component: {fileID: 191092151}
   m_Layer: 7
   m_Name: truck-kun
@@ -3846,7 +3846,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.027700543, y: 0.0523234}
@@ -3943,6 +3943,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   in_range: 0
   mouse_over: 0
+--- !u!61 &191092152
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191092147}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.029437095, y: 0.050181866}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9411258, y: 0.52022505}
+  m_EdgeRadius: 0
 --- !u!1001 &226873172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6977,7 +7003,6 @@ GameObject:
   - component: {fileID: 1220407352}
   - component: {fileID: 1220407355}
   - component: {fileID: 1220407354}
-  - component: {fileID: 1220407353}
   m_Layer: 2
   m_Name: rug
   m_TagString: Untagged
@@ -7000,22 +7025,6 @@ Transform:
   m_Father: {fileID: 1284131608}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!19719996 &1220407353
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220407351}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!483693784 &1220407354
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -7480,7 +7489,7 @@ GameObject:
   - component: {fileID: 1284131610}
   - component: {fileID: 1284131609}
   m_Layer: 6
-  m_Name: tilemap grid
+  m_Name: indoor grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10408,7 +10417,7 @@ Transform:
   m_GameObject: {fileID: 1931820375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 30, y: 30, z: 1}
+  m_LocalScale: {x: 50, y: 50, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
