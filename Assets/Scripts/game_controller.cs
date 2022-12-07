@@ -10,6 +10,7 @@ public class game_controller : MonoBehaviour
     //game variables
     public Vector2 map_border;
     public Vector3 mouse_world_pos;  // position of the mouse relative to world coordinates
+    public bool ui_active = false;
     public GameObject close_button, sign_popup, clipboard;
     [HideInInspector]   //waste is public for other scripts to reference, but we don't need it to clutter the inspector. it'll be dynamically instantiated.
     public GameObject waste;    //waste object returned from instantiation. public so we can reference from player behavior

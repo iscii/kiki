@@ -31,7 +31,7 @@ public class sign_behavior : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("mouse enter");
+        // Debug.Log("mouse enter");
 
         Cursor.SetCursor(gc.cursor_hand, new Vector2(gc.cursor_hand.width / 2, gc.cursor_hand.height / 10), CursorMode.Auto);
         mouse_over = true;
@@ -43,7 +43,7 @@ public class sign_behavior : MonoBehaviour
 
     private void OnMouseExit()
     {
-        Debug.Log("mouse exit");
+        // Debug.Log("mouse exit");
 
         Cursor.SetCursor(gc.cursor_pointer, new Vector2(gc.cursor_pointer.width / 2, gc.cursor_pointer.height / 10), CursorMode.Auto);
         mouse_over = false;
@@ -55,19 +55,29 @@ public class sign_behavior : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("click");
+        // Debug.Log("click");
 
         if(!in_range){
             Debug.Log("You're not in range!");
             return;
         }
+        if(gc.ui_active){
+            Debug.Log("Another UI is active!");
+            return;
+        }
         sign_text.text = desc;
+        gc.close_button.GetComponent<close_button_behavior>().cur_popup = gc.sign_popup;    //give close button a reference to what it's controlling
+
+        // maybe only make it open instead of toggle
         gc.sign_popup.SetActive(!gc.sign_popup.activeSelf);   //toggle active
+        gc.close_button.SetActive(true);
+        
+        gc.ui_active = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("collision enter");
+        // Debug.Log("collision enter");
 
         if (!in_range && other.gameObject.name.Equals("player"))
         {
@@ -82,7 +92,7 @@ public class sign_behavior : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("collision exit");
+        // Debug.Log("collision exit");
         
         //check if collision is player and player is completely out of range
         if (in_range && other.gameObject.name.Equals("player") &&
