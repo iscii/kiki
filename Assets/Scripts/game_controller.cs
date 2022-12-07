@@ -10,6 +10,7 @@ public class game_controller : MonoBehaviour
     //game variables
     public Vector2 map_border;
     public Vector3 mouse_world_pos;  // position of the mouse relative to world coordinates
+    public GameObject close_button, sign_popup, clipboard;
     [HideInInspector]   //waste is public for other scripts to reference, but we don't need it to clutter the inspector. it'll be dynamically instantiated.
     public GameObject waste;    //waste object returned from instantiation. public so we can reference from player behavior
     public ArrayList waste_arr = new ArrayList();   //global array of waste
@@ -37,7 +38,12 @@ public class game_controller : MonoBehaviour
         map_border = map.transform.localScale / 2;  //gets x and y of map scale /2 and puts it into vector2 map_border as offsets
         spawner = GameObject.Find("spawner");
 
+        close_button = GameObject.Find("close_button");
+        sign_popup = GameObject.Find("sign_popup");
+        clipboard = GameObject.Find("clipboard");
+
         spawnWaste();
+        disableUI();
     }
 
     // Update is called once per frame
@@ -61,7 +67,7 @@ public class game_controller : MonoBehaviour
             Waste winner = pile.accessor[size][lottery];
 
             // set waste's properties to this object
-            Debug.Log(winner.name);
+            // Debug.Log(winner.name);
             waste.name = winner.name;
             waste.GetComponent<waste_behavior>().desc = winner.desc;
             waste.GetComponent<waste_behavior>().size = size;
@@ -71,4 +77,10 @@ public class game_controller : MonoBehaviour
             waste_arr.Add(waste);   //maybe we don't need this if we can track everything by children
         }
     }
-}﻿
+
+    void disableUI(){
+        close_button.SetActive(false);
+        sign_popup.SetActive(false);
+        clipboard.SetActive(false);
+    }
+}

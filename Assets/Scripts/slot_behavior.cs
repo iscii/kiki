@@ -80,9 +80,9 @@ public class slot_behavior : MonoBehaviour
         {
             in_range = true;
             //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
-            if (mouse_over && my_waste.GetComponent<Renderer>().enabled)
+            if (mouse_over && my_waste.GetComponent<SpriteRenderer>().sprite == my_waste_sprite)
             {
-                my_waste.GetComponent<SpriteRenderer>().sprite = my_waste_sprite;
+                my_waste.GetComponent<SpriteRenderer>().sprite = my_waste_sprite_highlighted;
             }
         }
     }
@@ -98,10 +98,9 @@ public class slot_behavior : MonoBehaviour
         {
             in_range = false;
             //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
-            if (mouse_over && my_waste.GetComponent<Renderer>().enabled)
-                my_waste.GetComponent<SpriteRenderer>().sprite = my_waste_sprite_highlighted;
+            if (mouse_over && my_waste.GetComponent<SpriteRenderer>().sprite == my_waste_sprite_highlighted)
             {
-
+                my_waste.GetComponent<SpriteRenderer>().sprite = my_waste_sprite;
             }
         }
     }
