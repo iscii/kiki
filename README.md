@@ -1,4 +1,4 @@
 # kiki
-HSS 371 Computers & Society
+HSS 371 Computers & Society   
 A simple cleaning game that focuses on moving e-waste into a truck to be recycled.    
 https://iscii.itch.io/kikis-cleaning-service
