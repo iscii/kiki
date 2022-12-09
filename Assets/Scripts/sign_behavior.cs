@@ -18,9 +18,8 @@ public class sign_behavior : MonoBehaviour
         gc = GameObject.Find("game").GetComponent<game_controller>();
         sign_text = gc.sign_popup.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         player = GameObject.Find("player");
-        startcolor = gameObject.GetComponent<Renderer>().material.color;
-        // sign_sprite = Resources.Load<Sprite>("");
-        // sign_sprite_highlighted = Resources.Load<Sprite>("");
+        sign_sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+        sign_sprite_highlighted = Resources.Load<Sprite>("sign_highlighted");
     }
 
     // Update is called once per frame
@@ -36,9 +35,8 @@ public class sign_behavior : MonoBehaviour
         Cursor.SetCursor(gc.cursor_hand, new Vector2(gc.cursor_hand.width / 2, gc.cursor_hand.height / 10), CursorMode.Auto);
         mouse_over = true;
         if (in_range){
-            gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+            gameObject.GetComponent<SpriteRenderer>().sprite = sign_sprite_highlighted;
         }
-        //     gameObject.GetComponent<SpriteRenderer>().sprite = ;
     }
 
     private void OnMouseExit()
@@ -48,9 +46,8 @@ public class sign_behavior : MonoBehaviour
         Cursor.SetCursor(gc.cursor_pointer, new Vector2(gc.cursor_pointer.width / 2, gc.cursor_pointer.height / 10), CursorMode.Auto);
         mouse_over = false;
         if (in_range){
-            gameObject.GetComponent<Renderer>().material.color = startcolor;
+            gameObject.GetComponent<SpriteRenderer>().sprite = sign_sprite;
         }
-        //     gameObject.GetComponent<SpriteRenderer>().sprite = ;
     }
 
     private void OnMouseDown()
@@ -84,8 +81,7 @@ public class sign_behavior : MonoBehaviour
             in_range = true;
             //if you move into reach of waste, and if ur still hovering over it, highlight it
             if (mouse_over){
-                gameObject.GetComponent<Renderer>().material.color = Color.yellow;
-                // gameObject.GetComponent<SpriteRenderer>().sprite == ; //highlighted sprite
+                gameObject.GetComponent<SpriteRenderer>().sprite = sign_sprite_highlighted; //highlighted sprite
             }   
         }
     }
@@ -101,8 +97,7 @@ public class sign_behavior : MonoBehaviour
             in_range = false;
             //if you move out of reach of waste, and if ur still hovering over it, unhighlight it
             if (mouse_over){
-                gameObject.GetComponent<Renderer>().material.color = startcolor;
-                // gameObject.GetComponent<SpriteRenderer>().sprite = ; //unhighlighted sprite
+                gameObject.GetComponent<SpriteRenderer>().sprite = sign_sprite; //unhighlighted sprite
             }
         }
     }

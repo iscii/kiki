@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class truck_behavior : MonoBehaviour
 {
+    public Animator animator;
     private GameObject player, my_waste;
     private game_controller gc;
     [SerializeField] private bool in_range, mouse_over;
@@ -51,6 +52,12 @@ public class truck_behavior : MonoBehaviour
             Debug.Log("You've dropped off a(n) " + my_waste.name);
             my_waste.transform.parent = gameObject.transform;   //make the player the waste's parent
             player.GetComponent<player_behavior>().pickup_state(false);
+            gc.waste_arr.Remove(my_waste);
+
+            if(gc.waste_arr.Count <= 0){
+                gc.ui_active = true;
+                animator.SetTrigger("drive");
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

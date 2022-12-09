@@ -16,7 +16,7 @@ public class slot_behavior : MonoBehaviour
         gc = GameObject.Find("game").GetComponent<game_controller>();
         player = GameObject.Find("player");
         my_waste = transform.GetChild(0).gameObject;
-        my_waste_sprite = Resources.Load<Sprite>("Waste/" + my_waste.name);
+        my_waste_sprite = my_waste.GetComponent<SpriteRenderer>().sprite;
         my_waste_sprite_highlighted = Resources.Load<Sprite>("Waste_Highlighted/" + my_waste.name);
     }
 
