@@ -53,6 +53,10 @@ public class truck_behavior : MonoBehaviour
             my_waste.transform.parent = gameObject.transform;   //make the player the waste's parent
             player.GetComponent<player_behavior>().pickup_state(false);
             gc.waste_arr.Remove(my_waste);
+            animator.SetTrigger("place");
+
+            //hide item UI
+            gc.holding.SetActive(false);
 
             if(gc.waste_arr.Count <= 0){
                 gc.ui_active = true;
@@ -87,5 +91,9 @@ public class truck_behavior : MonoBehaviour
                 gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
             }
         }
+    }
+
+    public void end(){
+        gc.end();
     }
 }

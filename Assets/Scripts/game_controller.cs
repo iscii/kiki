@@ -11,7 +11,7 @@ public class game_controller : MonoBehaviour
     public Vector2 map_border;
     public Vector3 mouse_world_pos;  // position of the mouse relative to world coordinates
     public bool ui_active = false;
-    public GameObject close_button, sign_popup, clipboard;
+    public GameObject close_button, sign_popup, clipboard, holding;
     [HideInInspector]   //waste is public for other scripts to reference, but we don't need it to clutter the inspector. it'll be dynamically instantiated.
     public GameObject waste;    //waste object returned from instantiation. public so we can reference from player behavior
     public ArrayList waste_arr = new ArrayList();   //global array of waste
@@ -42,6 +42,7 @@ public class game_controller : MonoBehaviour
         close_button = GameObject.Find("close_button");
         sign_popup = GameObject.Find("sign_popup");
         clipboard = GameObject.Find("clipboard");
+        holding = GameObject.Find("holding");
 
         spawnWaste();
         disableUI();
@@ -83,5 +84,10 @@ public class game_controller : MonoBehaviour
         close_button.SetActive(false);
         sign_popup.SetActive(false);
         clipboard.SetActive(false);
+        holding.SetActive(false);
+    }
+    
+    public void end(){
+        clipboard.GetComponentInParent<clipboard_button_behavior>().end();
     }
 }

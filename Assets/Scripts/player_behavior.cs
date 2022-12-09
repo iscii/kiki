@@ -44,9 +44,11 @@ public class player_behavior : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if(gc.ui_active) return;
-        
         Vector2 velocity = new Vector2(0, 0);
+        if(gc.ui_active) {
+            GetComponent<Rigidbody2D>().velocity = velocity*Time.deltaTime;
+            return;
+        }
         if (Input.GetKey("w")){
             velocity.y += speed;
         }

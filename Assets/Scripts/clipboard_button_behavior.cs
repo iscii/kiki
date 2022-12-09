@@ -54,6 +54,12 @@ public class clipboard_button_behavior : MonoBehaviour
             if(child.gameObject.name == truck.name) continue;
             todo_list += "<s>" + child.gameObject.name + "</s>" + "<br>";
         }
-        
+    }
+    
+    public void end(){
+        clipboard_text.text = "Congrats! <br> You've successfully recycled all your old e-waste.";
+        gc.close_button.SetActive(false);
+        gc.clipboard.SetActive(true);
+        gc.ui_active = true;
     }
 }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class slot_behavior : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class slot_behavior : MonoBehaviour
     public int size;
     [SerializeField] private bool in_range, mouse_over;
     private Sprite my_waste_sprite, my_waste_sprite_highlighted;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +71,11 @@ public class slot_behavior : MonoBehaviour
             my_waste.GetComponent<Renderer>().enabled = false;
             my_waste.transform.parent = player.transform;   //make the player the waste's parent
             player.GetComponent<player_behavior>().pickup_state(true);
+
+            //display item in UI
+            gc.holding.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = my_waste.name;
+            gc.holding.GetComponent<Image>().sprite = my_waste_sprite;
+            gc.holding.SetActive(true);
         }
     }
 
